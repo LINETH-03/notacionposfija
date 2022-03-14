@@ -8,11 +8,30 @@ public class NotationParser  {
         this.pila = pila;
     }
 
-    public String posFixToInfix(String expression){
-
-
-        return null;
+    private static boolean pref(String op) {
+        return "^".equals(op)||"*".equals(op) || "/".equals(op) || "+".equals(op) || "- ".equals(op)  || ")".equals(op)||"(".equals(op) ;
     }
+
+    public String posFixToInfix(String expression){
+        String A,B,R;
+        String[] arrayInfix = expression.split(" ");
+        for(String op: arrayInfix){
+            if (!pref(op)){
+                pila.push(op);
+            }else {
+                 B = pila.pop();
+                 A = pila.pop();
+                 //INFIJA A*B
+                 R = A + " " + op + " " + B;
+                pila.push(R);
+            }
+        }
+
+        return pila.pop();
+    }
+
+
+
 
 
 

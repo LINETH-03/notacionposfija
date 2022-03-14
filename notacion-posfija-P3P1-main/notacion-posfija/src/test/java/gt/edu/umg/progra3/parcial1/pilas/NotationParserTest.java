@@ -15,7 +15,6 @@ public class NotationParserTest {
     }
 
 
-
     @Test
     public void testNotationPosToInfix(){
         String posFix = parser.posFixToInfix("1 2 * 3 +");
